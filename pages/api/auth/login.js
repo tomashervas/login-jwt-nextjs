@@ -13,7 +13,7 @@ export default function handleLogin(req, res) {
         exp: Math.floor(Date.now()/1000) + 60 * 60 * 24 * 30
     },'secret')
 
-    const tokenSerialized = serialize('myToken', token, {
+    const tokenSerialized = serialize('tokenAuth', token, {
           httpOnly: true,
           secure: process.env.NODE_ENV == 'production',
           sameSite: 'strict',
