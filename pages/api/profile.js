@@ -6,7 +6,7 @@ export default function profileHandler(req, res) {
     if(!tokenAuth) return res.status(401).json({error: 'no token'})
 
     try {
-      const user = jwt.verify( tokenAuth, 'secret' )
+      const user = jwt.verify( tokenAuth,process.env.JWT_SECRET )
       const {email, username} = user;
       return res.json({email, username});
 

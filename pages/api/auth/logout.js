@@ -7,7 +7,7 @@ export default function logoutHandler(req, res) {
   if (!tokenAuth) return res.status(401).json({ error: "no token" });
 
   try {
-    jwt.verify(tokenAuth, "secret");
+    jwt.verify(tokenAuth, process.env.JWT_SECRET);
 
     const tokenSerialized = serialize("tokenAuth", null, {
       httpOnly: true,
