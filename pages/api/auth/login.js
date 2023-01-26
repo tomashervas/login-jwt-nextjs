@@ -11,7 +11,7 @@ export default function handleLogin(req, res) {
         email,
         username: 'admin',
         exp: Math.floor(Date.now()/1000) + 60 * 60 * 24 * 30
-    },'secret')
+    },process.env.JWT_SECRET)
 
     const tokenSerialized = serialize('tokenAuth', token, {
           httpOnly: true,
